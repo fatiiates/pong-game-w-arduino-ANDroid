@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar color="dark">
+    <ion-title>
+      Pong Game w/ Arduino
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-grid class="fullheight xc">
+		<ion-row *ngIf="!isConnected" class="fullwidth">
+			<button ion-button full color="primary" (click)="listPairedDevices()">
+				<ion-icon name="refresh"></ion-icon>&nbsp;Refresh Bluetooth Devices
+			</button>
+			<ion-row>
+				<ion-col>
+					<ion-list radio-group [(ngModel)]="pairedDeviceID" *ngIf="listToggle">
+						<ion-item *ngFor="let i of pairedList;let j=index">
+						<ion-label>{{i.name}}</ion-label>
+						<ion-radio value="{{j}}" ></ion-radio>
+						</ion-item>
+					</ion-list>
+				</ion-col>
+			</ion-row>
+			<button ion-button full color="primary" *ngIf="listToggle" (click)="selectDevice()">
+				<ion-icon name="bluetooth"></ion-icon>&nbsp;Connect Bluetooth Devices
+			</button>
+		</ion-row>
+		<ion-row class="led-control" *ngIf="isConnected">
+			<ion-col>
+				<ion-buttons class="button-column">
+					Led Kontrol:&nbsp;
+					<button ion-button small color="success" (click)="ledChange(isOpened)">
+						<ion-icon name="{{ isOpened ? 'ios-sunny-outline': 'sunny'}}"></ion-icon>
+						&emsp; {{isOpened ? 'AÇ':'KAPAT'}}
+					</button>
+				</ion-buttons>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="isConnected" class="ion-justify-content-center fullwidth">
+			<ion-col class="vcs">
+				<ion-buttons>
+					<button ion-button large class="border-radius-50" color="success" >
+						<ion-icon name="arrow-round-back"></ion-icon>
+					</button>
+				</ion-buttons>
+				<h3>Sola ilerle</h3>
+			</ion-col>
+			<ion-col class="vcs">
+				<ion-buttons>
+					<button ion-button large class="border-radius-50" color="danger">
+						<ion-icon name="arrow-round-forward"></ion-icon>
+					</button>
+				</ion-buttons>
+				<h3>Sağa ilerle</h3>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
