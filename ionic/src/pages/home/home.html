@@ -40,7 +40,7 @@
 		<ion-row *ngIf="isConnected" class="ion-justify-content-center fullwidth">
 			<ion-col class="vcs">
 				<ion-buttons>
-					<button ion-button large class="border-radius-50" color="success" >
+					<button ion-button large class="border-radius-50" color="success" (click)="moveTo('Left')">
 						<ion-icon name="arrow-round-back"></ion-icon>
 					</button>
 				</ion-buttons>
@@ -48,7 +48,7 @@
 			</ion-col>
 			<ion-col class="vcs">
 				<ion-buttons>
-					<button ion-button large class="border-radius-50" color="danger">
+					<button ion-button large class="border-radius-50" color="danger" (click)="moveTo('Right')">
 						<ion-icon name="arrow-round-forward"></ion-icon>
 					</button>
 				</ion-buttons>
