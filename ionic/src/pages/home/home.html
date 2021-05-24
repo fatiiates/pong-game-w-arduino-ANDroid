@@ -10,7 +10,7 @@
 	<ion-grid class="fullheight xc">
 		<ion-row *ngIf="!isConnected" class="fullwidth">
 			<button ion-button full color="primary" (click)="listPairedDevices()">
-				<ion-icon name="refresh"></ion-icon>&nbsp;Refresh Bluetooth Devices
+				<ion-icon name="refresh"></ion-icon>&nbsp;Bluetooth Cihazlarını Yenile
 			</button>
 			<ion-row>
 				<ion-col>
@@ -23,16 +23,16 @@
 				</ion-col>
 			</ion-row>
 			<button ion-button full color="primary" *ngIf="listToggle" (click)="selectDevice()">
-				<ion-icon name="bluetooth"></ion-icon>&nbsp;Connect Bluetooth Devices
+				<ion-icon name="bluetooth"></ion-icon>&nbsp;Bluetooth Cihazına Bağlan
 			</button>
 		</ion-row>
 		<ion-row class="led-control" *ngIf="isConnected">
 			<ion-col>
 				<ion-buttons class="button-column">
 					Led Kontrol:&nbsp;
-					<button ion-button small color="success" (click)="ledChange(isOpened)">
-						<ion-icon name="{{ isOpened ? 'ios-sunny-outline': 'sunny'}}"></ion-icon>
-						&emsp; {{isOpened ? 'AÇ':'KAPAT'}}
+					<button ion-button small color="success" (click)="ledChange(!isOpen)">
+						<ion-icon name="{{ isOpen ? 'ios-sunny-outline': 'sunny'}}"></ion-icon>
+						&emsp; {{isOpen ? 'KAPAT':'AÇ'}}
 					</button>
 				</ion-buttons>
 			</ion-col>
