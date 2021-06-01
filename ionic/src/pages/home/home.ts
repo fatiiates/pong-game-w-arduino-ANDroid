@@ -21,8 +21,8 @@ export class HomePage {
 	locationX: number = 0
 
 	// Kurucu metot kendisine verilen parametreleri otomatik olarak nesneye aktarıyor
-	// örn: this.navCtrl olarak erişilebilir
-	constructor(public navCtrl: NavController, public loadingController: LoadingController, private alertCtrl: AlertController, private bluetoothSerial: BluetoothSerial, private toastCtrl: ToastController) {
+	// örn: this.loadingController olarak erişilebilir
+	constructor(public loadingController: LoadingController, private alertCtrl: AlertController, private bluetoothSerial: BluetoothSerial, private toastCtrl: ToastController) {
 		
 	}
 
@@ -152,18 +152,10 @@ export class HomePage {
 			})
 	}
 
-	// BluetoothSerial değişkeniyle olan bağlantıyı kapatmayı sağlıyor
-	deviceDisconnected() {
-		// BluetoothSerial değişkeniyle olan bağlantıyı sonlandırıyor
-		// Kullanıcıya mesaj veriyor
-		this.bluetoothSerial.disconnect()
-		this.showToast("Cihaz bağlantısı başarıyla kapatıldı!")
-	}
-
 	// Led kontrolü yapılmasını sağlıyor
 	ledChange(param: boolean) {
 
-		// Led açılıyorsa 1 kapanıyorsa 0 değeri cihaza iletiliyor
+		// Led açılıyorsa 7 kapanıyorsa 6 değeri cihaza iletiliyor
 		this.dataSend = param ? '7': '6'
 		this.bluetoothSerial.write(this.dataSend)
 			.then(success => {
