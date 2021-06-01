@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial'
-import { NavController, LoadingController, AlertController, ToastController, Loading } from 'ionic-angular'
+import { LoadingController, AlertController, ToastController, Loading } from 'ionic-angular'
 
 // Ionic için component özellikleri tanımlanıyor
 @Component({
@@ -116,7 +116,7 @@ export class HomePage {
 		const loading = this.presentLoadingWithOptions()
 
 		// Cihaza bağlanılıyor
-		var sub = this.bluetoothSerial.connect(address)
+		this.bluetoothSerial.connect(address)
 			.subscribe(success => {
 				// Bağlantı başarılıysa bluetoothSerial değişkenine abone olunuyor
 				// Loader kapatılıyor
